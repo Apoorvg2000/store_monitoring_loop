@@ -44,6 +44,22 @@ There are two API endpoints -
    b. Output
    - if report generation is not complete, return “Running” as the output.
    - if report generation is complete, return “Complete” along with the CSV file with the schema described above.
+  
+## Logic for last_one_day (uptime and downtime)
+
+1. Initialize a dictionary last_one_day_data with keys "uptime" and "downtime". The values for "uptime" and "downtime" are set to 0.
+2. Calculate one_day_ago as the day of the week one day before the current_day. If current_day is 0 (Monday), set one_day_ago to 6 (Sunday), if current_day is 2 (Wednesday), set one_day_ago to 1 (Tuesday) and so on.
+3. Check if the store is open during the last one day (one_day_ago to current_day) at the current time (current_time). 
+4. This is done by querying the store.timings to see if there is any entry that matches the conditions for day and time.
+5. If the store is not open during the last one day, return the initialized last_one_day_data.
+6. If the store is open during the last one day, query the store.status_logs to get all the logs within the last one day (utc_time - 1 day to utc_time) and order them by timestamp.
+7. Loop through each log in last_one_day_logs:
+8. Check if the log's timestamp falls within the store's business hours on that day (log_in_store_business_hours). This is done by querying the store.timings to see if there is any entry that matches the conditions for day and time.
+9. If the log is not within the store's business hours, skip it and move to the next log.
+10. If the log's status is "active", increment the "uptime" value in last_one_day_data by 1 hour.
+11. If the log's status is not "active", increment the "downtime" value in last_one_day_data by 1 hour.
+12. Same logic has been followed for last one hour and last one week uptime and downtime.
+
 
 ## Environment Setup
 
