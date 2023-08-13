@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Update your database credentials here.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
