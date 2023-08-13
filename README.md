@@ -115,7 +115,7 @@ Now open your web browser and enter the following address to launch the web app 
 
 8. To trigger report generation, click on the `Trigger Report` button on the webpage. This will trigger the `/trigger_report` API endpoint and store the generated report in the database as well as in your local computer. The output will be a `report_id` using which you can view the generated report.
 
-**NOTE**: We are generating report for only the first 100 stores as it will take a lot of time to generate the report for all the stores. We can change that number anytime.
+**NOTE**: We are generating report for only the first 100 stores as it will take a lot of time to generate the report for all the stores. We can change that number anytime in the code.
 
 9. To view the generated report, enter the the `report_id` and hit `Get Report` button. This will show the generated report and its url on the local computer, on the webpage if it is completed with its `Status` as "Completed", otherwise its `Status` will be shown as "Running".
 
