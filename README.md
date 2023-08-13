@@ -68,7 +68,7 @@ source myenv/bin/activate
 3. Clone the repository inside the virtual environment.
 
 ```
-git clone
+git clone https://github.com/Apoorvg2000/store_monitoring_loop.git
 ```
 
 **NOTE**: Make sure to run below commands from the parent directory of manage.py file.
@@ -104,3 +104,7 @@ Now open your web browser and enter the following address to launch the web app 
 9. To view the generated report, enter the the `report_id` and hit `Get Report` button. This will show the generated report and its url on the local computer, on the webpage if it is completed with its `Status` as "Completed", otherwise its `Status` will be shown as "Running".
 
 ## Demo Video
+
+Refer to this [link](https://drive.google.com/file/d/1fgLPQOHqMFRLEEwXjqcU5HHz59YWjuyU/view?usp=share_link) to watch the demo video.
+
+
