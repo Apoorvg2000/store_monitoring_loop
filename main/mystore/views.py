@@ -1,3 +1,6 @@
+"""
+This module defines the views used in the store monitoring application. It contains function-based views that handle various webpage requests to render the appropriate templates with context data or perform certain actions based on user requests.
+"""
 from django.shortcuts import render
 from .models import StoreReport, ReportStatus
 from mystore.helper import trigger_report_combined
@@ -8,9 +11,14 @@ import csv
 
 # Create your views here.
 
+# The `index` view renders the homepage template.
+# It takes a request object and returns an HttpResponse.
 def index(request):
     return render(request, 'index.html')
 
+# The `trigger_report` view initiates the generation of a store report.
+# It creates a new StoreReport object, starts a thread to generate the report, and renders the 'trigger_report.html' with the report ID.
+# It takes a request object and returns an HttpResponse.
 def trigger_report(request):
     report = StoreReport.objects.create(status=ReportStatus.PENDING)
 
@@ -24,6 +32,9 @@ def trigger_report(request):
     }
     return render(request, 'trigger_report.html', data)
 
+# The `get_report` view fetches the status and details of a specific report based on a provided report ID.
+# It handles the case where the report ID is invalid and returns the appropriate HttpResponse.
+# It takes a request object and returns an HttpResponse with the report status or an error message.
 def get_report(request):
     report_id = request.GET['report_id']
 
