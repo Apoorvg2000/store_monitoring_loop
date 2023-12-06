@@ -1,4 +1,7 @@
 """
+This file contains the URL configuration for the main project. It defines the `urlpatterns` list which is used by Django
+to route URLs to their corresponding views.
+
 URL configuration for main project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,6 +21,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # Path for admin site
     path('admin/', admin.site.urls),
+    # Path for the home page which includes the URLs from the 'mystore' app
     path('', include('mystore.urls')),
 ]
+
